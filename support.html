@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サポート・プライバシーポリシー – 素数ハンター</title>
+  <title>サポート・プライバシーポリシー・利用規約 – 素数ハンター</title>
+  <!--
+    3.0.0 向け（2026-11-14、ユーザー「旧ゲームの内容を切り替えましょう／古い内容は、旧版として下の方に当分残す」）。
+    アプリ内のリンク（#privacy・#terms・#tokushoho）を変えないため、section の id は残す。旧版（2.2.0 以前）の内容は #legacy に当分残す。
+    原本：prime-nerd の docs/app-store/site/support.html
+  -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -25,33 +30,20 @@
     }
 
     nav {
-      display: flex; align-items: center; gap: 16px;
-      padding: 18px 32px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border);
     }
     nav a { color: var(--sub); text-decoration: none; font-size: 14px; }
     nav a:hover { color: var(--text); }
     nav a.home { font-weight: 800; font-size: 15px; color: var(--accent); }
 
-    .container {
-      max-width: 760px; margin: 0 auto; padding: 60px 24px 100px;
-    }
+    .container { max-width: 760px; margin: 0 auto; padding: 48px 16px 100px; }
 
-    h1 {
-      font-size: 32px; font-weight: 900; margin-bottom: 8px;
-    }
-    .updated { font-size: 13px; color: var(--sub); margin-bottom: 48px; }
+    h1 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+    .updated { font-size: 13px; color: var(--sub); margin-bottom: 40px; }
 
-    /* TAB LINKS */
-    .tabs { display: flex; gap: 8px; margin-bottom: 48px; }
-    .tabs a {
-      padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 700;
-      text-decoration: none; border: 1px solid var(--border); color: var(--sub);
-      transition: all 0.15s;
-    }
-    .tabs a:hover, .tabs a.active { background: var(--accent); color: #0a0618; border-color: var(--accent); }
-
-    section { margin-bottom: 60px; }
+    section { margin-bottom: 60px; scroll-margin-top: 16px; }
     section + section { border-top: 1px solid var(--border); padding-top: 60px; }
 
     h2 {
@@ -59,33 +51,35 @@
       padding-bottom: 10px; border-bottom: 2px solid rgba(245,208,0,0.3);
     }
     h3 { font-size: 16px; font-weight: 800; margin: 28px 0 10px; color: var(--accent); }
-    p { font-size: 15px; color: rgba(255,255,255,0.80); margin-bottom: 14px; }
-    ul { padding-left: 20px; margin-bottom: 14px; }
-    ul li { font-size: 15px; color: rgba(255,255,255,0.80); margin-bottom: 6px; }
+    p { font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 14px; }
+    ul, ol { padding-left: 22px; margin-bottom: 14px; }
+    li { font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 6px; }
+    a { color: var(--accent); }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--border); color: rgba(255,255,255,0.82); }
+    th { color: var(--text); font-weight: 800; background: var(--card); }
+    td:first-child { white-space: nowrap; }
+    table.kv td:first-child { width: 30%; font-weight: 700; color: var(--text); white-space: normal; }
 
     .contact-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      margin-top: 20px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; margin-top: 20px;
     }
     .contact-box a { color: var(--accent); text-decoration: none; }
-    .contact-box a:hover { text-decoration: underline; }
 
-    .lang-switch {
-      display: inline-block; margin-bottom: 40px;
-      font-size: 13px; color: var(--sub);
-    }
-    .lang-switch a { color: var(--accent); text-decoration: none; margin-left: 8px; }
+    .todo { background: #f5d000; color: #0a0618; font-weight: 800; padding: 0 4px; border-radius: 4px; }
 
+    #legacy { opacity: 0.85; }
+    #legacy .legacy-h { font-size: 18px; font-weight: 900; margin: 32px 0 12px; color: var(--text); }
+    #legacy h4 { font-size: 15px; font-weight: 800; margin: 20px 0 8px; color: var(--accent); }
+    #legacy .lang-switch { display: none; }
     footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 13px; color: var(--sub);
+      border-top: 1px solid var(--border); padding: 28px 16px;
+      text-align: center; font-size: 13px; color: var(--sub);
     }
-    footer a { color: var(--sub); text-decoration: none; margin: 0 10px; }
+    footer a { color: var(--sub); text-decoration: none; margin: 0 8px; }
   </style>
 </head>
 <body>
@@ -94,51 +88,298 @@
   <a class="home" href="index.html">← 素数ハンター</a>
   <a href="#support">サポート</a>
   <a href="#privacy">プライバシーポリシー</a>
+  <a href="#terms">利用規約</a>
+  <a href="#tokushoho">特定商取引法に基づく表記</a>
   <a href="#en">English</a>
+  <a href="#legacy">旧版</a>
 </nav>
 
 <div class="container">
 
-  <h1>サポート</h1>
-  <p class="updated">最終更新：2026年3月</p>
+  <h1>素数ハンター サポート</h1>
+  <p class="updated">最終更新：2026年11月14日（バージョン 3.0.0 以降）。バージョン 2.2.0 以前をお使いの方は、ページのいちばん下の<a href="#legacy">旧版</a>をご覧ください。</p>
 
-  <!-- SUPPORT (JP) -->
+  <!-- ===================== サポート ===================== -->
   <section id="support">
-    <h2>よくある質問 / FAQ</h2>
+    <h2>よくある質問</h2>
 
-    <h3>スコアがランキングに反映されない</h3>
-    <p>ランキングへの投稿にはインターネット接続が必要です。オフライン環境ではスコアは保存されますが、ランキングには反映されません。接続を確認してからゲームを終了してください。</p>
+    <h3>買った物が表示されない・機種を変えた</h3>
+    <p>商店のいちばん下の「購入を復元」を押してください。購入した時と同じ Apple ID なら、お金はかからずに戻ります。</p>
 
-    <h3>ニックネームを変更したい</h3>
-    <p>ランキング画面の「変更」ボタンからいつでも変更できます。変更後のスコア投稿から新しいニックネームが適用されます。</p>
+    <h3>冒険パスを解約したい</h3>
+    <p>iPhone の「設定」→ 自分の名前 →「サブスクリプション」、またはアプリの「その他」→「データの保存・復元」→「購読を管理・解約する」から解約できます。期間の終わりまでは特典を使えます。アプリやアカウントを削除しても、購読は解約されません。</p>
 
-    <h3>LEGEND モードが解放されない</h3>
-    <p>LEGEND モードは HARD モードで一定の条件を達成することで解放されます。まずは HARD モードでスコアを伸ばしましょう。</p>
+    <h3>返金してほしい</h3>
+    <p>購入の代金は Apple が受け取っているため、返金は Apple に申請してください（<a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">問題を報告する</a>）。返金の可否は Apple が判断します。</p>
 
-    <h3>5桁モードが選べない</h3>
-    <p>5桁モードは上位桁数のモードをある程度プレイすることで解放されます。</p>
+    <h3>機種変更で記録を引き継ぎたい</h3>
+    <p>「その他」→「データの保存・復元」で Apple と連携すると、冒険と街の記録をクラウドに保存し、新しい端末で戻せます。ファイルへの書き出し・読み込みもできます。</p>
 
-    <h3>広告を非表示にしたい</h3>
-    <p>動画広告（リワード広告）を視聴することで、1時間広告なしでプレイできます。設定画面の「広告」セクションからご利用ください。</p>
+    <h3>アカウントを削除したい</h3>
+    <p>「その他」→「データの保存・復元」→「アカウントの削除」から、いつでも削除できます。消える物と残る物は、下のプライバシーポリシーの「7. アカウントの削除」に書いています。</p>
 
-    <h3>アプリがクラッシュする・正常に動作しない</h3>
-    <p>アプリを再起動するか、端末を再起動してお試しください。それでも解決しない場合はお問い合わせください。</p>
+    <h3>アプリが止まる・正常に動かない</h3>
+    <p>アプリと端末を再起動してお試しください。直らない場合は、iOS のバージョン・端末の機種・起きたことを添えてお問い合わせください。</p>
 
     <h2 style="margin-top:48px;">お問い合わせ</h2>
+    <div class="contact-box">
+      <p>不具合の報告・ご要望・個人情報や購入に関するお問い合わせは、メールでご連絡ください。</p>
+      <p>📧 <a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- ===================== プライバシーポリシー ===================== -->
+  <section id="privacy">
+    <h2>プライバシーポリシー</h2>
+    <p>制定日：2026年11月14日</p>
+    <p>バージョン 2.2.0 以前の本アプリには、ページの下の<a href="#legacy-privacy">旧版のプライバシーポリシー</a>を適用します。</p>
+    <p>iOS アプリ「素数ハンター」（以下「本アプリ」）の運営者（以下「運営者」）は、個人情報の保護に関する法律（以下「個人情報保護法」）その他の法令を守り、利用者の情報を次のとおり取り扱います。このポリシーは本アプリのバージョン 3.0.0 以降に適用します。</p>
+
+    <h3>1. 運営者</h3>
+    <div class="table-wrap"><table class="kv">
+      <tr><td>運営者</td><td>本アプリの開発者（App Store の「販売元」に表示している個人）</td></tr>
+      <tr><td>氏名・住所</td><td>個人で運営しているため、ご請求があれば遅滞なくお知らせします（下の窓口へご連絡ください）。</td></tr>
+      <tr><td>お問い合わせ窓口</td><td><a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></td></tr>
+    </table></div>
+
+    <h3>2. 取り扱う情報と利用目的</h3>
+    <p>本アプリは、ゲームの進み具合や設定を主に端末の中に保存します。次の機能のために、必要な情報を外部のサービスへ送ります。本アプリは広告を表示せず、広告のための追跡（トラッキング）もしません。氏名・メールアドレス・住所・電話番号・位置情報は取得しません。</p>
+    <div class="table-wrap"><table>
+      <tr><th>送り先（提供者）</th><th>情報</th><th>利用目的</th></tr>
+      <tr><td>Firebase Authentication（Google）</td><td>本アプリが自動で作るアカウントID。「Apple で続ける」を選んだ場合は、Apple が発行する利用者の識別子（氏名・メールアドレスは Apple に求めません）</td><td>プレイヤー名とクラウド保存の持ち主の確認</td></tr>
+      <tr><td>Cloud Firestore・Cloud Functions（Google）</td><td>プレイヤー名とタグ。Apple と連携した場合は、冒険と街のクラウド保存（購入した物の記録を含みます）。以前の版でランキングに参加した場合の名前・点数・日時・アカウントID。不適切な名前などへの対応の記録</td><td>名前の登録と不適切な名前の確認、機種変更時の復元、以前の版のランキングの管理、不正な利用への対応</td></tr>
+      <tr><td>Firebase App Check（Google）／ Apple</td><td>正規のアプリからの通信であることを確かめる情報</td><td>サーバーの不正利用の防止</td></tr>
+      <tr><td>Apple App Store（StoreKit）</td><td>商品ID、取引と権利の情報</td><td>購入・復元・返金・購読状態の確認。支払いは Apple が扱い、運営者はカード番号などの支払い情報を受け取りません</td></tr>
+      <tr><td>Firebase Analytics（Google）</td><td>画面の表示やゲームの操作・購入の操作などの記録、アプリと端末の情報、アプリのインスタンスID</td><td>利用状況の把握と改善</td></tr>
+      <tr><td>Firebase Crashlytics（Google）</td><td>クラッシュやエラーの記録、端末・OS・アプリの版などの診断情報</td><td>不具合の調査と修正</td></tr>
+      <tr><td>Apple iCloud</td><td>プレイヤー名とタグ</td><td>端末の iCloud の設定に応じた同期</td></tr>
+    </table></div>
+    <ul>
+      <li>プレイヤー名には、本名など個人を特定できる情報を入れないでください。</li>
+      <li>写真への追加の許可は、利用者が保存を選んだ画像を書き込むためだけに使います。写真ライブラリの中身は読み取りません。</li>
+      <li>お知らせの通知は端末の中だけで予約し、通知のための情報を外部へ送りません。</li>
+    </ul>
+    <p>運営者は、上の目的の範囲を超えて情報を使いません。目的を変える場合は、法令に従ってお知らせします。</p>
+
+    <h3>3. 外部への送信について</h3>
+    <p>上の表の送り先へは、本アプリに組み込まれた各社のソフトウェアが情報を送ります。各社の取り扱いは、<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google のプライバシーポリシー</a>、<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase のプライバシーとセキュリティ</a>、<a href="https://www.apple.com/jp/legal/privacy/" target="_blank" rel="noopener">Apple のプライバシーポリシー</a>をご覧ください。</p>
+
+    <h3>4. 第三者への提供と委託</h3>
+    <p>運営者は、法令に基づく場合などを除き、利用者の同意なく個人データを第三者に提供しません。情報の保存や処理は、上の表のとおり Google LLC と Apple Inc. のサービスに委託しています。</p>
+
+    <h3>5. 外国での取り扱い</h3>
+    <p>Google LLC と Apple Inc. はアメリカ合衆国の事業者で、情報はアメリカ合衆国その他の国のサーバーで取り扱われることがあります（名前の登録などのサーバーの処理〔Cloud Functions〕は東京のリージョンで動かしています）。</p>
+    <ul>
+      <li>アメリカ合衆国には、個人情報の保護に関する包括的な連邦法はありません。分野ごとの連邦法と、州の法律（カリフォルニア州消費者プライバシー法など）があります。詳しくは、個人情報保護委員会の<a href="https://www.ppc.go.jp/personalinfo/legal/kaiseihogohou/#gaikoku" target="_blank" rel="noopener">外国における個人情報の保護に関する制度等の調査</a>をご覧ください。</li>
+      <li>Google は Firebase のデータ処理とセキュリティに関する条項に基づき、Apple は自社のプライバシーポリシーに基づき、情報を保護するための措置をとっています。</li>
+    </ul>
+
+    <h3>6. 保存する期間</h3>
+    <ul>
+      <li>プレイヤー名・タグ・クラウド保存：アカウントを削除するまで</li>
+      <li>削除したアカウントの記録が戻らないようにするための印（アカウントIDと削除の日時）、不適切な名前などへの対応の記録：本アプリの提供を終えるまで</li>
+      <li>Firebase Analytics の記録：最長14か月（Google の設定に従って自動で消えます）</li>
+      <li>Firebase Crashlytics の記録：90日（Google の定めに従って自動で消えます）</li>
+      <li>購入の取引の記録：Apple が管理します。運営者のサーバーには、クラウド保存の中の購入した物の記録のほかに残しません</li>
+    </ul>
+
+    <h3>7. アカウントの削除</h3>
+    <p>「その他」→「データの保存・復元」→「アカウントの削除」から、いつでも削除できます。Apple と連携している場合は、Apple で本人確認をしてから削除し、Apple との連携も解除します。</p>
+    <ul>
+      <li>消える物：アカウント、プレイヤー名とタグ、クラウド保存、アカウントに結び付いたランキングの記録。サーバーの処理は受付のあと自動で進み、終わるまで時間がかかることがあります。</li>
+      <li>残る物：端末の中の記録と、利用者が書き出したファイル（アプリを削除すると端末の記録は消えます）。App Store の購入履歴と購入の権利（Apple が管理します）。同じタグと確認できない iCloud の記録。6. に書いた削除の印。</li>
+      <li>アカウントを削除しても、冒険パスの購読は解約されません。先に解約してください。</li>
+      <li>削除のあとに本アプリを使うと新しいアカウントIDが作られ、削除したアカウントとはつながりません。</li>
+    </ul>
+
+    <h3>8. 安全管理のための措置</h3>
+    <ul>
+      <li>通信は暗号化しています。サーバーの記録は、本人のアカウントだけが自分の物を読み書きできるように設定し、名前の登録などのサーバーの処理は、正規のアプリからの通信だけを受け付けます。</li>
+      <li>管理画面に入れるのは運営者だけです。</li>
+      <li>委託先は、情報の保護に十分な措置をとっている事業者（Google・Apple）を選んでいます。</li>
+      <li>外国で取り扱う場合は、5. のとおり、その国の制度を把握したうえで取り扱っています。</li>
+    </ul>
+
+    <h3>9. 開示・訂正・利用停止などのご請求</h3>
+    <p>保有個人データの利用目的の通知、開示、訂正・追加・削除、利用の停止・消去、第三者への提供の停止をご希望の場合は、1. の窓口へメールでご連絡ください。ご本人であることを確かめるため、アプリの中で確認できる情報をお尋ねすることがあります。手数料はいただきません。</p>
+
+    <h3>10. 未成年の方へ</h3>
+    <p>未成年の方は、保護者の方の同意を得てからご利用ください。有料の商品の購入は、保護者の方の同意を得てから行ってください。iPhone の「承認と購入のリクエスト」で、購入の前に保護者の方の承認を求めることができます。</p>
+
+    <h3>11. ご意見・苦情の窓口</h3>
+    <p>個人情報の取り扱いについてのご意見やご相談は、1. の窓口で受け付けます。</p>
+
+    <h3>12. このポリシーの変更</h3>
+    <p>法令の改正や本アプリの変更に合わせて、このポリシーを変えることがあります。変える時は、このページに変更の日付とともに掲載し、大切な変更は本アプリの更新の案内でもお知らせします。</p>
+  </section>
+
+  <!-- ===================== 利用規約 ===================== -->
+  <section id="terms">
+    <h2>利用規約</h2>
+    <p>制定日：2026年11月14日（バージョン 3.0.0 以降に適用します）</p>
+    <p>この利用規約（以下「本規約」）は、運営者が提供する iOS アプリ「素数ハンター」（以下「本アプリ」）の利用の条件を定めます。利用者は、本規約に同意したうえで本アプリを利用するものとします。有料の商品の購入には、本規約に加えて Apple の<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">標準使用許諾契約</a>が適用されます。</p>
+
+    <h3>第1条（アカウントとプレイヤー名）</h3>
+    <ol>
+      <li>本アプリは、利用者ごとにアカウントを自動で作ります。利用者は、Apple と連携することができます。</li>
+      <li>プレイヤー名には、本名や連絡先など個人を特定できる情報、他人の権利を侵害する言葉、差別的・わいせつ・暴力的な言葉を使わないでください。</li>
+      <li>運営者は、前項に反する名前を、利用者に知らせずに変えたり、使えなくしたりすることがあります。</li>
+    </ol>
+
+    <h3>第2条（有料の商品）</h3>
+    <ol>
+      <li>有料の商品は、App Store の決済で購入します。価格は購入の画面に表示する金額（税込）です。</li>
+      <li>冒険パスは1か月ごとに自動で更新される購読です。次の更新日の24時間前までに解約しない限り、同じ期間・同じ価格で自動で更新されます。解約は App Store の購読の管理から行います。</li>
+      <li>購入した商品は、本アプリの中だけで使えます。購入後の取消し・返品はできません。返金は Apple に申請してください。</li>
+      <li>買い切りの商品は、購入した時と同じ Apple ID で「購入を復元」すると、別の端末でも使えます。</li>
+    </ol>
+
+    <h3>第3条（ゲームの中の物）</h3>
+    <ol>
+      <li>星晶・ゴールド・招待状・手紙などのゲームの中の通貨、ガチャで出る仲間・数学者・アイテムなど（以下「ゲームの中の物」）は、本アプリの中で使う権利だけを利用者に認めるものです。</li>
+      <li>ゲームの中の物は、お金や他の物と換えたり、他人に譲ったり、売り買いしたりすることはできません。</li>
+      <li>ガチャで出る物の種類と出る確率は、アプリの中の「確率を見る」に表示します。</li>
+    </ol>
+
+    <h3>第4条（禁止事項）</h3>
+    <p>利用者は、次のことをしてはいけません。</p>
+    <ol>
+      <li>法令や公序良俗に反すること</li>
+      <li>本アプリやサーバーへの不正なアクセス、本アプリの改造・解析、不正なツールの利用</li>
+      <li>不具合を意図して利用すること</li>
+      <li>アカウントやゲームの中の物を売り買いすること、またはそのための宣伝</li>
+      <li>他の利用者や第三者の権利を侵害し、迷惑をかけること</li>
+      <li>本アプリの運営を妨げること</li>
+    </ol>
+    <p>運営者は、利用者が本条に反した場合、事前に知らせずに、そのアカウントの利用を止めることがあります。</p>
+
+    <h3>第5条（本アプリの変更・停止・終了）</h3>
+    <ol>
+      <li>運営者は、本アプリの内容を変えることがあります。</li>
+      <li>運営者は、保守、障害、天災などのやむを得ない事情があるときは、本アプリの全部または一部を止めることがあります。</li>
+      <li>運営者が本アプリの提供を終える場合は、終える日のおおむね1か月以上前までに、このページと本アプリの更新の案内でお知らせします。冒険パスの新規の購入と更新は、終える前に止めます。</li>
+    </ol>
+
+    <h3>第6条（運営者の責任）</h3>
+    <ol>
+      <li>運営者は、本アプリの不具合や停止によって利用者に生じた損害について、運営者の軽過失による場合に限り、その損害が生じた月に利用者が本アプリの有料の商品のために支払った金額を上限として責任を負います。運営者の故意または重大な過失による場合は、この上限を適用しません。</li>
+    </ol>
+
+    <h3>第7条（本規約の変更）</h3>
+    <p>運営者は、利用者の一般の利益に合う場合、または変更が契約の目的に反せず合理的な場合に、本規約を変えることがあります。変える時は、効力が生じる日より前に、変更の内容と効力が生じる日をこのページでお知らせします。</p>
+
+    <h3>第8条（準拠法と裁判所）</h3>
+    <p>本規約は日本の法律に従って解釈します。本アプリについての争いは、民事訴訟法の定めに従い、管轄のある日本の裁判所で解決します。</p>
+
+    <h3>第9条（お問い合わせ）</h3>
+    <p>本規約についてのお問い合わせは、<a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a> へご連絡ください。</p>
+  </section>
+
+  <!-- ===================== 特定商取引法に基づく表記 ===================== -->
+  <section id="tokushoho">
+    <h2>特定商取引法に基づく表記</h2>
+    <div class="table-wrap"><table class="kv">
+      <tr><td>販売事業者</td><td>本アプリの開発者（App Store の「販売元」に表示している個人）</td></tr>
+      <tr><td>氏名・所在地・電話番号</td><td>個人で運営しているため、ご請求があれば遅滞なく開示します。下のメールアドレスへご連絡ください。</td></tr>
+      <tr><td>お問い合わせ</td><td><a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a>（お返事はメールでいたします）</td></tr>
+      <tr><td>販売価格</td><td>アプリの中の購入の画面に表示する金額（税込）</td></tr>
+      <tr><td>商品代金のほかに必要な料金</td><td>インターネットの通信料</td></tr>
+      <tr><td>支払方法</td><td>App Store の決済（Apple ID に登録した支払方法）</td></tr>
+      <tr><td>支払時期</td><td>買い切りの商品：購入の手続きの時。冒険パス：最初の購入の時と、その後の1か月ごとの更新の時（Apple の定めによります）</td></tr>
+      <tr><td>商品の引渡時期</td><td>購入の手続きが終わったあと、すぐにアプリの中で使えます</td></tr>
+      <tr><td>返品・キャンセル</td><td>デジタルの商品のため、購入後の返品・キャンセルはできません。返金は Apple に申請してください（<a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">問題を報告する</a>）。</td></tr>
+      <tr><td>定期購入（冒険パス）</td><td>1か月ごとに自動で更新されます。次の更新日の24時間前までに解約しない限り、同じ期間・同じ価格で更新されます。解約は iPhone の「設定」→ 自分の名前 →「サブスクリプション」から行います。解約しても、期間の終わりまでは特典を使えます。</td></tr>
+      <tr><td>動作環境</td><td>iOS 17.0 以降の iPhone</td></tr>
+    </table></div>
+  </section>
+
+  <!-- ===================== English ===================== -->
+  <section id="en">
+    <h2>Support (English)</h2>
+    <h3>Restore purchases</h3>
+    <p>Tap "Restore purchases" at the bottom of the shop with the Apple ID you used to buy. There is no charge.</p>
+    <h3>Cancel the Adventure Pass</h3>
+    <p>Open Settings → your name → Subscriptions on your iPhone, or More → Save &amp; restore → Manage / cancel subscription in the app. Deleting the app or your account does not cancel a subscription.</p>
+    <h3>Refunds</h3>
+    <p>Apple handles payments, so please request refunds from Apple (<a href="https://reportaproblem.apple.com/" target="_blank" rel="noopener">Report a Problem</a>).</p>
+    <h3>Contact</h3>
+    <p>📧 <a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></p>
+  </section>
+
+  <section id="privacy-en">
+    <h2>Privacy Policy (English)</h2>
+    <p>Effective: November 14, 2026. Operator: the developer of the app (the individual shown as the seller on the App Store); name and address are provided promptly on request. Contact: <a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a>. This policy applies to the iOS app "Prime Hunter" version 3.0.0 and later; for version 2.2.0 and earlier, see the <a href="#legacy-en">previous policy</a> below. The Japanese version above prevails.</p>
+    <h3>1. Information we handle and why</h3>
+    <p>Game progress and settings are stored mainly on your device. The app sends the information below to external services for the stated purposes. The app shows no ads and does not track you for advertising. We do not collect your name, email address, postal address, phone number or location.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Service</th><th>Information</th><th>Purpose</th></tr>
+      <tr><td>Firebase Authentication (Google)</td><td>An account ID created by the app; if you choose Continue with Apple, Apple's user identifier (we do not request your name or email)</td><td>Identifying the owner of your player name and cloud save</td></tr>
+      <tr><td>Cloud Firestore / Cloud Functions (Google)</td><td>Player name and tag; adventure and town cloud save (including records of purchased items) if linked with Apple; leaderboard names, scores, times and account IDs from earlier versions; moderation records</td><td>Name registration and moderation, restoring on a new device, legacy leaderboards, handling abuse</td></tr>
+      <tr><td>Firebase App Check (Google) / Apple</td><td>Information attesting that requests come from the genuine app</td><td>Preventing server abuse</td></tr>
+      <tr><td>Apple App Store (StoreKit)</td><td>Product IDs, transaction and entitlement information</td><td>Verifying purchases, restores, refunds and subscription status. Apple handles payment details; we never receive card numbers</td></tr>
+      <tr><td>Firebase Analytics (Google)</td><td>Screen, gameplay and purchase-flow events, app and device information, app instance ID</td><td>Understanding usage and improving the app</td></tr>
+      <tr><td>Firebase Crashlytics (Google)</td><td>Crash and error reports, device/OS/app version and other diagnostics</td><td>Investigating and fixing problems</td></tr>
+      <tr><td>Apple iCloud</td><td>Player name and tag</td><td>Syncing according to your iCloud settings</td></tr>
+    </table></div>
+    <p>Please do not put your real name or other personal information in your player name. Photo library permission is used only to save images you choose to save. Notifications are scheduled on the device and send nothing outside.</p>
+    <h3>2. Sharing and processing outside Japan</h3>
+    <p>We do not provide personal data to third parties without your consent except as required by law. Storage and processing are entrusted to Google LLC and Apple Inc. (United States), and information may be processed in the United States and other countries. The United States has no comprehensive federal privacy law; it has sector-specific federal laws and state laws such as the California Consumer Privacy Act. Google protects the data under the Firebase data processing and security terms, and Apple under its privacy policy.</p>
+    <h3>3. Retention</h3>
+    <p>Player name, tag and cloud save: until you delete your account. Deletion markers (account ID and time) and moderation records: until the app is discontinued. Firebase Analytics: up to 14 months. Crashlytics: 90 days. Transaction records are kept by Apple.</p>
+    <h3>4. Deleting your account</h3>
+    <p>More → Save &amp; restore → Delete account, at any time. Your account, player name and tag, cloud saves and leaderboard records tied to the account are deleted. On-device data, App Store purchase history and entitlements, and deletion markers remain. Deleting your account does not cancel a subscription.</p>
+    <h3>5. Your requests</h3>
+    <p>To request disclosure, correction, deletion or suspension of use of your personal data, email us. There is no fee. Minors should use the app and make purchases with a parent's or guardian's consent.</p>
+    <h3>6. Changes</h3>
+    <p>We will post changes on this page with the date.</p>
+  </section>
+
+  <section id="terms-en">
+    <h2>Terms of Use (English summary)</h2>
+    <p>The Japanese Terms of Use above govern the use of the app. In short: do not use personal information or offensive words in your player name; purchases are made through the App Store and are also governed by Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Standard EULA</a>; the Adventure Pass renews monthly unless cancelled at least 24 hours before renewal; in-game currencies and items cannot be exchanged for money, transferred or sold; cheating, unauthorized access and account trading are prohibited; we will give at least about one month's notice before discontinuing the app.</p>
+  </section>
+
+  <!-- ===================== 旧版（2.2.0 以前）===================== -->
+  <section id="legacy">
+    <h2>旧版（バージョン 2.2.0 以前）</h2>
+    <p>バージョン 2.2.0 以前の本アプリ（30秒で素数をタップするゲーム）のサポートとプライバシーポリシーです。3.0.0 への切り替えのあいだ、当分のあいだ残します。バージョン 3.0.0 以降には、このページの上の内容を適用します。</p>
+  <!-- SUPPORT (JP) -->
+  <div id="legacy-support">
+    <h3 class="legacy-h">よくある質問 / FAQ</h3>
+
+    <h4>スコアがランキングに反映されない</h4>
+    <p>ランキングへの投稿にはインターネット接続が必要です。オフライン環境ではスコアは保存されますが、ランキングには反映されません。接続を確認してからゲームを終了してください。</p>
+
+    <h4>ニックネームを変更したい</h4>
+    <p>ランキング画面の「変更」ボタンからいつでも変更できます。変更後のスコア投稿から新しいニックネームが適用されます。</p>
+
+    <h4>LEGEND モードが解放されない</h4>
+    <p>LEGEND モードは HARD モードで一定の条件を達成することで解放されます。まずは HARD モードでスコアを伸ばしましょう。</p>
+
+    <h4>5桁モードが選べない</h4>
+    <p>5桁モードは上位桁数のモードをある程度プレイすることで解放されます。</p>
+
+    <h4>広告を非表示にしたい</h4>
+    <p>動画広告（リワード広告）を視聴することで、1時間広告なしでプレイできます。設定画面の「広告」セクションからご利用ください。</p>
+
+    <h4>アプリがクラッシュする・正常に動作しない</h4>
+    <p>アプリを再起動するか、端末を再起動してお試しください。それでも解決しない場合はお問い合わせください。</p>
+
+    <h3 class="legacy-h" style="margin-top:48px;">お問い合わせ</h3>
     <div class="contact-box">
       <p>バグの報告・ご要望・その他のお問い合わせは、GitHubのIssuesまたはメールにてご連絡ください。</p>
       <p>📧 <a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></p>
       <p>🐙 <a href="https://github.com/SuiPrincess" target="_blank">github.com/SuiPrincess</a></p>
     </div>
-  </section>
+  </div>
 
   <!-- PRIVACY POLICY (JP) -->
-  <section id="privacy">
-    <h2>プライバシーポリシー</h2>
+  <div id="legacy-privacy">
+    <h3 class="legacy-h">プライバシーポリシー</h3>
 
     <p>本アプリ「素数ハンター」（以下「本アプリ」）の開発者（以下「当方」）は、ユーザーのプライバシーを尊重し、個人情報の適切な取り扱いに努めます。</p>
 
-    <h3>収集する情報</h3>
+    <h4>収集する情報</h4>
     <p>本アプリは以下の情報を収集する場合があります：</p>
     <ul>
       <li><strong>ゲームスコア・統計情報</strong>：ランキング掲載のため、スコアと端末識別子（ランダム生成）をサーバーに送信します。氏名・連絡先などの個人情報は送信しません。</li>
@@ -146,81 +387,84 @@
       <li><strong>アプリ利用状況（Firebase Analytics）</strong>：アプリの改善を目的として、匿名の利用データを収集します。</li>
     </ul>
 
-    <h3>広告について</h3>
+    <h4>広告について</h4>
     <p>本アプリは Google AdMob による広告を表示します。AdMob は広告配信のためにデバイスの識別子を使用する場合があります。詳細は <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent);">Googleのプライバシーポリシー</a> をご参照ください。</p>
 
-    <h3>情報の第三者提供</h3>
+    <h4>情報の第三者提供</h4>
     <p>当方は、法令に基づく場合を除き、収集した情報を第三者に提供・販売することはありません。</p>
 
-    <h3>情報の保存・管理</h3>
+    <h4>情報の保存・管理</h4>
     <p>スコアデータは Firebase（Google LLC）のサーバーに保存されます。Firebase のプライバシーポリシーについては <a href="https://firebase.google.com/support/privacy" target="_blank" style="color:var(--accent);">こちら</a> をご参照ください。</p>
 
-    <h3>お子様の利用について</h3>
+    <h4>お子様の利用について</h4>
     <p>本アプリは 4 歳以上を対象としています。13 歳未満のお子様から意図的に個人情報を収集することはありません。</p>
 
-    <h3>本ポリシーの変更</h3>
+    <h4>本ポリシーの変更</h4>
     <p>本ポリシーは予告なく変更される場合があります。変更後はこのページに最新版を掲載します。</p>
 
-    <h3>お問い合わせ</h3>
+    <h4>お問い合わせ</h4>
     <p>プライバシーに関するご質問は <a href="mailto:hotelerlogapp@gmail.com" style="color:var(--accent);">hotelerlogapp@gmail.com</a> までご連絡ください。</p>
-  </section>
+  </div>
 
   <!-- ENGLISH -->
-  <section id="en">
-    <h2>Support (English)</h2>
+  <div id="legacy-en">
+    <h3 class="legacy-h">Support (English)</h3>
 
-    <h3>Score not showing on the leaderboard</h3>
+    <h4>Score not showing on the leaderboard</h4>
     <p>An internet connection is required to submit scores. Please check your connection and finish the game while connected.</p>
 
-    <h3>How to change my nickname</h3>
+    <h4>How to change my nickname</h4>
     <p>Tap the "Edit" button on the Leaderboard screen to change your nickname at any time.</p>
 
-    <h3>LEGEND mode not unlocked</h3>
+    <h4>LEGEND mode not unlocked</h4>
     <p>LEGEND mode unlocks by achieving a certain condition in HARD mode. Keep playing to unlock it.</p>
 
-    <h3>Contact</h3>
+    <h4>Contact</h4>
     <div class="contact-box">
       <p>For bug reports, feedback, or other inquiries:</p>
       <p>📧 <a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></p>
     </div>
 
-    <h2 style="margin-top:48px;">Privacy Policy (English)</h2>
+    <h3 class="legacy-h" style="margin-top:48px;">Privacy Policy (English)</h3>
 
     <p>This Privacy Policy describes how "Prime Nerd" (the "App") handles your information.</p>
 
-    <h3>Information We Collect</h3>
+    <h4>Information We Collect</h4>
     <ul>
       <li><strong>Game scores & statistics</strong>: Scores and a randomly generated device identifier are sent to our server for leaderboard purposes. No personally identifiable information (name, email, etc.) is collected.</li>
       <li><strong>Nickname</strong>: Only if you choose to set one, used solely for leaderboard display.</li>
       <li><strong>Usage data (Firebase Analytics)</strong>: Anonymous usage data is collected to improve the App.</li>
     </ul>
 
-    <h3>Advertising</h3>
+    <h4>Advertising</h4>
     <p>The App uses Google AdMob for advertisements. AdMob may use device identifiers for ad delivery. See <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--accent);">Google's Privacy Policy</a> for details.</p>
 
-    <h3>Third-Party Sharing</h3>
+    <h4>Third-Party Sharing</h4>
     <p>We do not sell or share your information with third parties except as required by law.</p>
 
-    <h3>Data Storage</h3>
+    <h4>Data Storage</h4>
     <p>Score data is stored on Firebase (Google LLC) servers. See <a href="https://firebase.google.com/support/privacy" target="_blank" style="color:var(--accent);">Firebase Privacy</a> for details.</p>
 
-    <h3>Children's Privacy</h3>
+    <h4>Children's Privacy</h4>
     <p>The App is rated 4+. We do not knowingly collect personal information from children under 13.</p>
 
-    <h3>Changes to This Policy</h3>
+    <h4>Changes to This Policy</h4>
     <p>We may update this policy at any time. The latest version will always be available on this page.</p>
 
-    <h3>Contact</h3>
+    <h4>Contact</h4>
     <p>For privacy-related questions: <a href="mailto:hotelerlogapp@gmail.com" style="color:var(--accent);">hotelerlogapp@gmail.com</a></p>
+  </div>
   </section>
 
 </div>
 
 <footer>
-  <a href="index.html">Home</a>
+  <a href="index.html">ホーム</a>
   <a href="#support">サポート</a>
   <a href="#privacy">プライバシーポリシー</a>
-  <p style="margin-top:12px;">© 2026 Hiroki. All rights reserved.</p>
+  <a href="#terms">利用規約</a>
+  <a href="#tokushoho">特定商取引法に基づく表記</a>
+  <a href="#legacy">旧版</a>
 </footer>
 
 </body>
