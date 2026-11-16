@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>素数ハンター – Prime Nerd</title>
-  <meta name="description" content="素数を見つけてタップ！30秒で何問正解できる？全国ランキングに挑戦しよう。">
-  <meta property="og:title" content="素数ハンター – Prime Nerd">
-  <meta property="og:description" content="素数を見つけてタップ！30秒で何問正解できる？全国ランキングに挑戦しよう。">
+  <title>素数ハンター</title>
+  <!--
+    3.0.0 向けの紹介ページ（2026-11-17、ユーザー「紹介ページは今すぐ切り替える」）。
+    旧版（2.2.0 以前の素数のミニゲーム集）のサポートは support.html#legacy に残している。
+    原本：prime-nerd の docs/app-store/site/index.html
+  -->
+  <meta name="description" content="素数の仲間を大砲から撃ち出して、大きな数の敵を素因数分解！毎月のイベント、数学者の挑戦、港町「プリモ港」の街づくり。広告なしで遊べます。">
+  <meta property="og:title" content="素数ハンター">
+  <meta property="og:description" content="素数の大砲で冒険、港町をのんびり復興。広告なしで遊べる iPhone のゲームです。">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://suiprincess.github.io/prime-hunter/img/01-trump.jpg">
+  <link rel="icon" href="img/icon.png">
+  <link rel="apple-touch-icon" href="img/icon.png">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,292 +23,177 @@
       --bg:      #0a0618;
       --bg2:     #110d22;
       --accent:  #f5d000;
+      --teal:    #2ec4b6;
       --text:    #ffffff;
-      --sub:     rgba(255,255,255,0.55);
+      --sub:     rgba(255,255,255,0.62);
       --card:    rgba(255,255,255,0.06);
       --border:  rgba(255,255,255,0.10);
       --radius:  18px;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      line-height: 1.7;
-      min-height: 100vh;
+      line-height: 1.75;
+      overflow-x: hidden;
     }
+    a { color: var(--accent); }
 
-    /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 32px;
-      background: rgba(10,6,24,0.85);
-      backdrop-filter: blur(12px);
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 16px;
+      padding: 16px 24px;
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-size: 16px; font-weight: 900; letter-spacing: 0.04em; }
-    .nav-logo span { color: var(--accent); }
-    nav a.lang { font-size: 13px; color: var(--sub); text-decoration: none; }
-    nav a.lang:hover { color: var(--text); }
+    .nav-logo { font-size: 16px; font-weight: 900; letter-spacing: 0.04em; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+    .nav-links a { color: var(--sub); text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: var(--text); }
 
-    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
-      padding: 100px 24px 60px;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(100,60,255,0.25) 0%, transparent 70%);
+      padding: 64px 16px 40px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(100,60,255,0.28) 0%, transparent 70%);
     }
-    .hero-icon {
-      width: 120px; height: 120px; border-radius: 27px;
-      background: linear-gradient(135deg, #1a0a4a, #3a1888);
-      border: 2px solid rgba(245,208,0,0.4);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 56px;
-      margin-bottom: 28px;
-      box-shadow: 0 20px 60px rgba(100,60,255,0.4);
+    .hero img.icon {
+      width: 112px; height: 112px; border-radius: 26px;
+      box-shadow: 0 10px 40px rgba(100,60,255,0.45);
+      margin-bottom: 22px;
     }
-    .hero h1 {
-      font-size: clamp(42px, 8vw, 72px);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero .subtitle {
-      font-size: clamp(14px, 2.5vw, 18px);
-      color: var(--sub);
-      margin-bottom: 36px;
-      letter-spacing: 0.05em;
-    }
-    .hero-desc {
-      font-size: 18px;
-      color: rgba(255,255,255,0.75);
-      max-width: 480px;
-      margin-bottom: 44px;
-    }
-    .btn-appstore {
+    .hero h1 { font-size: clamp(32px, 7vw, 52px); font-weight: 900; letter-spacing: 0.02em; line-height: 1.25; }
+    .hero .lead { font-size: clamp(16px, 3.6vw, 20px); color: var(--sub); margin: 14px auto 28px; max-width: 34em; }
+    .store {
       display: inline-flex; align-items: center; gap: 10px;
-      background: var(--accent); color: #0a0618;
-      font-size: 16px; font-weight: 900;
-      padding: 16px 36px; border-radius: 50px;
-      text-decoration: none;
-      transition: transform 0.15s, box-shadow 0.15s;
-      box-shadow: 0 8px 30px rgba(245,208,0,0.4);
+      background: var(--text); color: #000; text-decoration: none;
+      font-weight: 800; font-size: 16px;
+      padding: 14px 26px; border-radius: 14px;
     }
-    .btn-appstore:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,208,0,0.55); }
-    .btn-appstore svg { width: 22px; height: 22px; }
+    .store svg { width: 22px; height: 22px; }
+    .note { font-size: 13px; color: var(--sub); margin-top: 14px; }
 
-    /* FEATURES */
-    .section { padding: 80px 24px; max-width: 960px; margin: 0 auto; }
-    .section-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
-      color: var(--accent); text-transform: uppercase; margin-bottom: 14px;
+    .shots {
+      display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: 8px 16px 18px; margin: 8px auto 0; max-width: 1180px;
+      -webkit-overflow-scrolling: touch;
     }
-    .section h2 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin-bottom: 48px; }
+    .shots img {
+      flex: 0 0 auto; width: min(86vw, 700px); height: auto; aspect-ratio: 1400 / 644;
+      border-radius: 16px; border: 1px solid var(--border);
+      scroll-snap-align: center;
+    }
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
-    }
-    .feature-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-    .feature-icon { font-size: 32px; margin-bottom: 14px; }
-    .feature-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
-    .feature-card p { font-size: 14px; color: var(--sub); line-height: 1.6; }
+    .container { max-width: 880px; margin: 0 auto; padding: 40px 16px 80px; }
+    h2 { font-size: 24px; font-weight: 900; margin: 48px 0 18px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .feature { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .feature h3 { font-size: 17px; font-weight: 900; margin-bottom: 6px; color: var(--accent); }
+    .feature p { font-size: 15px; color: rgba(255,255,255,0.82); }
+    p.body { font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 12px; }
+    ul.plain { padding-left: 20px; }
+    ul.plain li { font-size: 15px; color: rgba(255,255,255,0.82); margin-bottom: 6px; }
 
-    /* HOW TO */
-    .howto {
-      background: var(--bg2);
-      padding: 80px 24px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+    .links a {
+      display: block; background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 14px 16px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 15px;
     }
-    .howto-inner { max-width: 960px; margin: 0 auto; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 28px; margin-top: 48px;
-    }
-    .step { text-align: center; }
-    .step-num {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(245,208,0,0.15);
-      border: 2px solid rgba(245,208,0,0.5);
-      color: var(--accent); font-size: 22px; font-weight: 900;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 16px;
-    }
-    .step h3 { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
-    .step p { font-size: 13px; color: var(--sub); }
+    .links a:hover { border-color: rgba(245,208,0,0.5); }
 
-    /* CTA */
-    .cta {
-      text-align: center; padding: 100px 24px;
-      background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(100,60,255,0.2) 0%, transparent 70%);
-    }
-    .cta h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; margin-bottom: 16px; }
-    .cta p { color: var(--sub); margin-bottom: 40px; font-size: 16px; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
-      font-size: 13px; color: var(--sub);
-    }
-    footer a { color: var(--sub); text-decoration: none; margin: 0 12px; }
-    footer a:hover { color: var(--text); }
+    .en { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 8px; }
+    footer { border-top: 1px solid var(--border); padding: 28px 16px; text-align: center; font-size: 13px; color: var(--sub); }
   </style>
 </head>
 <body>
+  <nav>
+    <a class="nav-logo" href="./">素数ハンター</a>
+    <div class="nav-links">
+      <a href="support.html">サポート</a>
+      <a href="support.html#privacy">プライバシー</a>
+      <a href="#en">English</a>
+    </div>
+  </nav>
 
-<nav>
-  <div class="nav-logo">素数ハンター <span>·</span> PRIME NERD</div>
-  <a class="lang" href="#en">English ↓</a>
-</nav>
+  <header class="hero">
+    <img class="icon" src="img/icon.png" alt="" width="112" height="112">
+    <h1>素数ハンター</h1>
+    <p class="lead">素数の仲間を大砲から撃ち出して、大きな数の敵を素因数分解！<br>冒険の合間は、港町「プリモ港」をのんびり復興。</p>
+    <a class="store" href="https://apps.apple.com/jp/app/id6760544446">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.69 0-1.74-.78-2.87-.76-1.47.02-2.83.86-3.59 2.17-1.54 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.24 2.73 2.2 1.1-.05 1.51-.71 2.84-.71 1.32 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.65-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.3-.88-2.29-3.51zM14.2 6.13c.6-.73 1.01-1.75.9-2.76-.87.04-1.92.58-2.54 1.31-.56.65-1.05 1.69-.92 2.68.97.08 1.96-.49 2.56-1.23z"/></svg>
+      App Store でダウンロード
+    </a>
+    <p class="note">iPhone（iOS 17 以降）・基本無料・アプリ内課金あり・広告なし</p>
+  </header>
 
-<!-- HERO (Japanese) -->
-<section class="hero">
-  <div class="hero-icon">🔢</div>
-  <h1>素数ハンター<br><span>PRIME NERD</span></h1>
-  <p class="subtitle">FIND PRIMES. TAP FAST. RANK UP.</p>
-  <p class="hero-desc">
-    素数を見つけてタップするだけ。<br>
-    30秒で何問正解できる？全国ランキングに挑戦しよう。
-  </p>
-  <a class="btn-appstore" href="https://apps.apple.com/jp/app/id6746533811" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    App Store でダウンロード
-  </a>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
-  <p class="section-label">Features</p>
-  <h2>特徴</h2>
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🏆</div>
-      <h3>全国ランキング</h3>
-      <p>スコアを投稿してリアルタイムでランキングを確認。世界中のプレイヤーとスコアを競おう。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <h3>30秒スピードバトル</h3>
-      <p>制限時間30秒で素数だけをタップ。コンボで得点倍増、ミスで減点のスリリングな展開。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <h3>難易度4段階</h3>
-      <p>EASY / NORMAL / HARD に加え、条件解放の LEGEND モード。上達に合わせてレベルアップ。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔢</div>
-      <h3>桁数カスタマイズ</h3>
-      <p>1桁〜5桁まで選択可能。大きな数になるほど判断が難しく、得点も高くなる。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🧠</div>
-      <h3>トレーニングモード</h3>
-      <p>時間制限なしでじっくり練習。正解・不正解をその場で確認しながら素数感覚を養おう。</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🌙</div>
-      <h3>ダーク / ライトテーマ</h3>
-      <p>目に優しい2種類のデザイン。日本語・English 両対応で世界中で楽しめる。</p>
-    </div>
+  <div class="shots" aria-label="画面">
+    <img src="img/01-trump.jpg" alt="必殺技で画面じゅうの敵をまとめて素因数分解する冒険の画面" loading="lazy">
+    <img src="img/02-battle.jpg" alt="大砲から素数の仲間を撃ち出す冒険の画面" loading="lazy">
+    <img src="img/03-gacha.jpg" alt="ガチャで数学者のアルキメデスが出た画面" loading="lazy">
+    <img src="img/04-town.jpg" alt="港町プリモ港の街づくりの画面" loading="lazy">
+    <img src="img/05-events.jpg" alt="毎月のイベントの画面" loading="lazy">
+    <img src="img/06-formation.jpg" alt="仲間の編成の画面" loading="lazy">
+    <img src="img/07-home.jpg" alt="ホームで仲間が暮らす画面" loading="lazy">
   </div>
-</section>
 
-<!-- HOW TO PLAY -->
-<div class="howto">
-  <div class="howto-inner">
-    <p class="section-label">How to Play</p>
-    <h2>遊び方</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>バブルを観察</h3>
-        <p>画面に次々と浮かぶ数字バブルをよく見る</p>
+  <main class="container">
+    <h2>遊べること</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>大砲の冒険</h3>
+        <p>2・3・5・7 の仲間を撃ち出し、かけ算の門で数を増やして、大きな数の敵を素因数で割っていきます。敵が素数になれば撃破。</p>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>素数をタップ</h3>
-        <p>素数（2, 3, 5, 7, 11…）だけを素早くタップ</p>
+      <div class="feature">
+        <h3>仲間と必殺技</h3>
+        <p>仲間と機体を育てて編成を考え、ここぞという時に必殺技。ハード・ハードコア・無限の塔にも挑めます。</p>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>コンボを繋げる</h3>
-        <p>連続正解でコンボ発動。スコアが加速する</p>
+      <div class="feature">
+        <h3>毎月のイベント</h3>
+        <p>月ごとにイベントの冒険が開きます。開催中は誰でも無料。イベントの素数キャラを図鑑に集めましょう。</p>
       </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>ランキングへ</h3>
-        <p>30秒終了後にスコアを投稿して順位を確認</p>
+      <div class="feature">
+        <h3>港町「プリモ港」</h3>
+        <p>冒険のクリアで届く船便で、家や名所を直して港を育てます。町の人や数学者たちと話し、釣りや採集も。</p>
+      </div>
+      <div class="feature">
+        <h3>ガチャと図鑑</h3>
+        <p>冒険で集めた星晶や、クリアでもらえる無料の回数で、仲間・数学者・アイテムが出ます。出る確率はアプリの中で確認できます。</p>
+      </div>
+      <div class="feature">
+        <h3>クラウド保存</h3>
+        <p>Apple との連携は任意。連携すると冒険と街をクラウドに保存し、機種変更しても同じ Apple Account で戻せます。</p>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ENGLISH SECTION -->
-<section class="section" id="en">
-  <p class="section-label">English</p>
-  <h2>PRIME NERD</h2>
-  <p style="color:var(--sub); max-width:600px; margin-bottom:40px; font-size:16px;">
-    A fast-paced brain training game where you spot prime numbers and tap them before time runs out.
-    30 seconds. How many can you get? Compete on the global leaderboard.
-  </p>
-  <div class="features">
-    <div class="feature-card">
-      <div class="feature-icon">🏆</div>
-      <h3>Global Leaderboard</h3>
-      <p>Submit your score and compete with players worldwide in real time.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⚡</div>
-      <h3>30-Second Sprint</h3>
-      <p>Tap only the primes in 30 seconds. Build combos, avoid mistakes.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎯</div>
-      <h3>4 Difficulty Levels</h3>
-      <p>EASY / NORMAL / HARD, plus a secret LEGEND mode to unlock.</p>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🧠</div>
-      <h3>Training Mode</h3>
-      <p>Practice without a timer. Learn primes at your own pace.</p>
-    </div>
-  </div>
-</section>
+    <h2>有料の商品</h2>
+    <p class="body">ゲームは無料で最後まで遊べます。値段はアプリの中の購入の画面に表示します。</p>
+    <ul class="plain">
+      <li>冒険パス（1か月の自動更新の購読）：数学者の挑戦、すべての遠征パックの冒険、終わったイベント（過去の冒険）などが遊べます。解約は iPhone の「設定」→ 自分の名前 →「サブスクリプション」から。</li>
+      <li>遠征パック（買い切り）：専用の冒険・報酬の機体・ホームの背景・衣装。</li>
+      <li>キャラ衣装 全6種、街の外観 全6種（買い切り）。</li>
+    </ul>
 
-<!-- CTA -->
-<section class="cta">
-  <h2>今すぐ挑戦しよう<br><span style="color:var(--accent)">Start Hunting Primes</span></h2>
-  <p>無料ダウンロード · Free to Play</p>
-  <a class="btn-appstore" href="https://apps.apple.com/jp/app/id6746533811" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download on the App Store
-  </a>
-</section>
+    <h2>サポートと決まり</h2>
+    <div class="links">
+      <a href="support.html">サポート・よくある質問</a>
+      <a href="support.html#privacy">プライバシーポリシー</a>
+      <a href="support.html#terms">利用規約</a>
+      <a href="support.html#tokushoho">特定商取引法に基づく表記</a>
+    </div>
+    <p class="body" style="margin-top:18px">お問い合わせ：<a href="mailto:hotelerlogapp@gmail.com">hotelerlogapp@gmail.com</a></p>
+    <p class="body">2.2.0 以前の版（素数のミニゲーム集）のサポートとポリシーは、<a href="support.html#legacy">サポートのページの下</a>に残しています。</p>
 
-<footer>
-  <p style="margin-bottom:10px;">
-    <a href="support.html">サポート / Support</a>
-    <a href="support.html#privacy">プライバシーポリシー / Privacy Policy</a>
-  </p>
-  <p>© 2026 Hiroki. All rights reserved.</p>
-</footer>
+    <section class="en" id="en">
+      <h2>Prime Hunter</h2>
+      <p class="body">Fire prime allies from a cannon and break huge numbers down into prime factors. Between adventures, rebuild the harbor town of Primo at your own pace. Monthly events, mathematician challenges and an endless tower. No ads.</p>
+      <p class="body">iPhone (iOS 17 or later). Free to play with optional in-app purchases.</p>
+      <div class="links">
+        <a href="https://apps.apple.com/app/id6760544446">App Store</a>
+        <a href="support.html#en">Support</a>
+        <a href="support.html#privacy-en">Privacy Policy</a>
+      </div>
+    </section>
+  </main>
 
+  <footer>© 2026 素数ハンター</footer>
 </body>
 </html>
